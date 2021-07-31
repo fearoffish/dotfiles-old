@@ -23,7 +23,7 @@ fi
 # check whether dotfiles is already cloned or not
 if [ ! -d "$CLONE_PATH"/dotfiles ]; then
     cd "$CLONE_PATH"
-    echo git clone git@github.com/fearoffish/dotfiles
+    git clone git@github.com/fearoffish/dotfiles
 fi
 
 brew bundle -v --file "$CLONE_PATH"/dotfiles/Brewfile

@@ -1,36 +1,3 @@
-# mstrap pieces
-brew 'ack'
-brew 'curl'
-brew 'git'
-brew 'jq'
-brew 'mkcert'
-brew 'openssl'
-brew 'pkg-config'
-brew 'readline'
-brew 'zlib'
-
-# Language runtime managers
-brew 'asdf'
-
-if /darwin/ =~ RUBY_PLATFORM
-  brew 'autoconf'
-  brew 'automake'
-  brew 'bison'
-  brew 'coreutils'
-  brew 'findutils'
-  brew 'gettext'
-  brew 'gnu-sed'
-  brew 'gnu-tar'
-  brew 'libiconv'
-
-  # Resolve *.localhost
-  brew 'launchdns', restart_service: true
-else
-  # TODO: dnsmasq or something
-end
-
-# my bundles
-
 tap 'github/gh'
 tap 'cantino/mcfly'
 tap 'afnanenayet/tap'
