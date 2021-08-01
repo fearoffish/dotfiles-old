@@ -12,7 +12,9 @@ if [ ! -f /usr/local/bin/brew ] && [ ! -f /opt/homebrew/bin/brew ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-echo "$(brew --prefix fish)/bin/fish" | sudo tee -a /etc/shells
+if [ ! -z $(grep "fish" /etc/shells) ]; then 
+  echo "$(brew --prefix fish)/bin/fish" | sudo tee -a /etc/shells
+fi
 
 # dotfiles
 CLONE_PATH=~/a
@@ -36,4 +38,4 @@ fi
 
 stow -v -d "$CLONE_PATH"/dotfiles/packages -t $HOME fish starship lvim home wezterm gh
 
-cwd
+./macos

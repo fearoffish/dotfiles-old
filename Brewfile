@@ -24,10 +24,10 @@ brew 'imagemagick'
 brew 'keys'
 brew 'mas'
 brew 'mstrap'
-brew 'mysql', restart_service: true
+brew 'mysql'
 brew 'jq' # json processor
 brew 'neovim', args: ['HEAD']
-brew 'postgresql', restart_service: true
+brew 'postgresql'
 brew 'rg' # ripgrep
 brew 'starship' # prompt
 brew 'stow' # dotfiles management

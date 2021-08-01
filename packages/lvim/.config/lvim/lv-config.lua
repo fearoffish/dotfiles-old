@@ -135,6 +135,7 @@ lvim.builtin.which_key.on_config_done = function()
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
     f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
   }
+  keys["F"] = { "<cmd>lua require('telescope').find_files({hidden=true})<cr>", "Find File (hidden)"}
 end
 
 -- Autopairs
