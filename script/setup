@@ -26,7 +26,7 @@ if [ ! -d "$CLONE_PATH"/dotfiles ]; then
     git clone git@github.com/fearoffish/dotfiles
 fi
 
-brew bundle -v --file "$CLONE_PATH"/dotfiles/Brewfile
+brew bundle -v --file "$CLONE_PATH"/dotfiles/Brewfile --no-upgrade
 
 # stow those dotfiles
 
@@ -34,4 +34,4 @@ if [ ! -d ~/.config ]; then
     mkdir ~/.config/
 fi
 
-stow -v -d "$CLONE_PATH"/dotfiles/packages -t $HOME fish starship lvim home
+stow -v -d "$CLONE_PATH"/dotfiles/packages -t $HOME fish starship lvim home wezterm gh

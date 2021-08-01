@@ -1,9 +1,22 @@
 -f .tags
---recurse=yes
 --exclude=.git
 --exclude=.sass-cache
---exclude=vendor/*
---exclude=node_modules/*
+--exclude=.svn
+--exclude=BUILD
+--exclude=\*.bak
+--exclude=\*.cache
+--exclude=\*.class
+--exclude=\*.csproj
+--exclude=\*.csproj.user
+--exclude=\*.dll
+--exclude=\*.min.\*
+--exclude=\*.pdb
+--exclude=\*.pyc
+--exclude=\*.sln
+--exclude=\*.swp
 --exclude=db/*
 --exclude=log/*
+--exclude=node_modules/*
 --exclude=tmp/*
+--exclude=vendor/*
+--recurse=yes
