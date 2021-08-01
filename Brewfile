@@ -57,4 +57,5 @@ cask 'font-inconsolata'
 cask 'font-fantasque-sans-mono'
 cask 'font-powerline-symbols'
 
-# mas 'Fantastical', id: 975937182
+mas 'Fantastical', id: 975937182
+mas 'Kaleidoscope', id: 587512244

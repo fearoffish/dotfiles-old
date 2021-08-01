@@ -34,4 +34,4 @@ if [ ! -d ~/.config ]; then
     mkdir ~/.config/
 fi
 
-stow -v -d "$CLONE_PATH"/dotfiles/packages -t $HOME fish starship
+stow -v -d "$CLONE_PATH"/dotfiles/packages -t $HOME fish starship lvim home
