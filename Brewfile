@@ -31,6 +31,7 @@ brew 'postgresql', restart_service: true
 brew 'rg' # ripgrep
 brew 'starship' # prompt
 brew 'stow' # dotfiles management
+brew 'svn'
 brew 'terminal-notifier'
 brew 'tldr' # man page supplement
 brew 'tmux'

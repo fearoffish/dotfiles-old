@@ -1416,10 +1416,10 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.2.5",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "7f08dbe93e705f77ada4fd0279c2cf86c6273ed4",
+        "Homebrew/homebrew-core": "af645dbe767f7d4e9672b311073e632da6777207",
         "CLT": "12.5.0.22.9",
         "Xcode": "12.5",
-        "macOS": "11.4"
+        "macOS": "11.5.1"
       }
     }
   }
