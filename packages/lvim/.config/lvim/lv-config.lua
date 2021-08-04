@@ -12,24 +12,25 @@ lvim.document_highlight = true
 lvim.ignore_case = true
 lvim.smart_case = true
 cmd("set relativenumber")
+cmd("set inccommand=nosplit")
 
 -- keymappings
 lvim.leader = "space"
 -- overwrite the key-mappings provided by LunarVim for any mode, or leave it empty to keep them
--- lvim.keys.normal_mode = {
+lvim.keys.normal_mode = {
 --   Page down/up
 --   {'[d', '<PageUp>'},
 --   {']d', '<PageDown>'},
 --
 --   Navigate buffers
---   {'<Tab>', ':bnext<CR>'},
---   {'<S-Tab>', ':bprevious<CR>'},
+  {'<Tab>', ':bnext<CR>'},
+  {'<S-Tab>', ':bprevious<CR>'},
 -- }
 -- if you just want to augment the existing ones then use the utility function
 -- require("utils").add_keymap_insert_mode({ silent = true }, {
 -- { "<C-s>", ":w<cr>" },
 -- { "<C-c>", "<ESC>" },
--- })
+}
 -- you can also use the native vim way directly
 -- vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
 cmd(':tnoremap <Esc> <C-\\><C-n>')
@@ -124,7 +125,7 @@ vnoremap p "_dP
 lvim.builtin.which_key.on_config_done = function()
   local keys = lvim.builtin.which_key.mappings
 
-  keys.t = { 
+  keys.t = {
     name = "Terminal",
     h = { "<cmd>split term://fish | resize 28 <cr>", "Horizontal" },
     v = { "<cmd>vsplit term://fish <cr>", "Vertical" },

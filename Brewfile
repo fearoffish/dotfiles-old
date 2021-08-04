@@ -23,6 +23,7 @@ brew 'httpie'
 brew 'imagemagick'
 brew 'keys'
 brew 'mas'
+brew 'mosh'
 brew 'mstrap'
 brew 'mysql'
 brew 'jq' # json processor

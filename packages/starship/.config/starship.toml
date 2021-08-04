@@ -29,3 +29,7 @@ behind = "⇣${count}"
 
 [directory.substitutions]
 "a/github/tetra" = "tetra"
+
+[env_var.TS_ENV]
+default = "dev"
+format = "tf_env: [$env_value]($style) "
