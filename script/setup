@@ -36,6 +36,6 @@ if [ ! -d ~/.config ]; then
     mkdir ~/.config/
 fi
 
-stow -v -d "$CLONE_PATH"/dotfiles/packages -t $HOME fish starship lvim wezterm gh git ctags ruby tmux
+stow -v -d "$CLONE_PATH"/dotfiles/packages -t $HOME fish starship lvim wezterm gh git ctags ruby tmux zsh iterm2
 
-./macos
+./script/macos
