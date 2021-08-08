@@ -1470,6 +1470,42 @@
       "Twitter": {
         "id": "1482454543",
         "version": "8.76"
+      },
+      "Craft": {
+        "id": "1487937127",
+        "version": "1.6.9"
+      },
+      "GarageBand": {
+        "id": "682658836",
+        "version": "10.4.3"
+      },
+      "Keynote": {
+        "id": "409183694",
+        "version": "11.1"
+      },
+      "Pages": {
+        "id": "409201541",
+        "version": "11.1"
+      },
+      "Paprika Recipe Manager 3": {
+        "id": "1303222628",
+        "version": "3.6.5"
+      },
+      "Reeder": {
+        "id": "1529448980",
+        "version": "5.0.7"
+      },
+      "com.echodot.Red": {
+        "id": "1491764008",
+        "version": "1.7.4"
+      },
+      "iMovie": {
+        "id": "408981434",
+        "version": "10.2.5"
+      },
+      "iNet Network Scanner": {
+        "id": "403304796",
+        "version": "2.8.3"
       }
     }
   },
@@ -1478,7 +1514,7 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.2.6",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "56fc3243b3cc889f2b29719a809c0de2ad5f05d9",
+        "Homebrew/homebrew-core": "1c4eba7b3c85e21fd9f561a78b9e7b9b38c57b43",
         "CLT": "12.5.0.22.9",
         "Xcode": "12.5",
         "macOS": "11.5.1"

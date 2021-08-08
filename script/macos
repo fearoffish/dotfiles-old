@@ -123,16 +123,19 @@ sudo systemsetup -setrestartfreeze on
 sudo pmset -a displaysleep 15
 
 # Disable machine sleep while charging
-sudo pmset -c sleep 0
+sudo pmset -a sleep 0
 
 # Set machine sleep to 5 minutes on battery
-sudo pmset -b sleep 5
+sudo pmset -b sleep 20
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+# sudo systemsetup -setcomputersleep Off > /dev/null
+
+# wake if I'm near
+sudo pmset -c proximitywake 1
 
 # Hibernation mode
 # 0: Disable hibernation (speeds up entering sleep mode)
@@ -141,7 +144,7 @@ sudo systemsetup -setcomputersleep Off > /dev/null
 sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
-sudo rm /private/var/vm/sleepimage
+sudo rm -f /private/var/vm/sleepimage
 # Create a zero-byte file instead…
 sudo touch /private/var/vm/sleepimage
 # …and make sure it can’t be rewritten
@@ -232,7 +235,7 @@ defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Show the ~/Library folder
-chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+# chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
 # Show the /Volumes folder
 sudo chflags nohidden /Volumes
