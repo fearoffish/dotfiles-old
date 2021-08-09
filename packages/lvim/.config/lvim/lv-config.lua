@@ -148,3 +148,19 @@ lvim.builtin.autopairs.on_config_done = function()
     endwise('def', 'end',nil, nil)
     })
 end
+
+-- ruby solargraph
+local util = require("lspconfig/util")
+lvim.lang.ruby.lsp.setup = {
+    cmd = { "solargraph", "stdio" },
+    filetypes = { "ruby" },
+    init_options = {
+      formatting = false
+    },
+    root_dir = util.root_pattern("Gemfile", ".git"),
+    settings = {
+      solargraph = {
+        diagnostics = true
+      }
+    }
+}

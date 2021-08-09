@@ -6,7 +6,7 @@
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='nvim '
+  export EDITOR='lvim '
 fi
 
 bindkey "^U" backward-kill-line
@@ -27,13 +27,10 @@ export PATH
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/homebrew/opt/openssl@1.1"
 export RUBY_CFLAGS="-w"
 # export RUBYOPT=-W:no-deprecated
-export STARSHIP_CONFIG=~/.config/starship/config.toml
 export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
 
 . /opt/homebrew/opt/asdf/asdf.sh
-
-# eval "$(direnv hook zsh)"
 
 # Hook direnv into your shell.
 export DIRENV_LOG_FORMAT=""
@@ -42,7 +39,7 @@ direnv() { asdf exec direnv "$@"; }
 
 export ZSH="/Users/jamievandyke/.oh-my-zsh"
 
-plugins=(asdf rails git docker-compose common-aliases jsontools bundler kubectl sudo z zsh-autosuggestions)
+plugins=(asdf rails git docker-compose common-aliases jsontools bundler kubectl sudo z)
 
 FPATH=/opt/homebrew/share/zsh/site-functions:$FPATH
 . $(pack completion --shell zsh)
@@ -60,4 +57,5 @@ eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended"
+
 if [ -e /Users/jamievandyke/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jamievandyke/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

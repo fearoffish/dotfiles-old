@@ -14,7 +14,7 @@
         "revision": "d72e66fae225a682f95145e9d7a28503e76cfb67"
       },
       "homebrew/cask-fonts": {
-        "revision": "15dda3f91572c5a2ba4a00081df6c6012ad04085"
+        "revision": "eef7af2d599b4e414de799a903099914e415a1f9"
       },
       "maxfierke/mstrap": {
         "revision": "3ff53250886e096962498231e044aaf2bd8a0b0a"
@@ -1404,6 +1404,12 @@
         "options": {
           "full_name": "carbon-copy-cloner"
         }
+      },
+      "setapp": {
+        "version": "2.9.12,1626434072",
+        "options": {
+          "full_name": "setapp"
+        }
       }
     },
     "mas": {
@@ -1514,7 +1520,7 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.2.6",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "1c4eba7b3c85e21fd9f561a78b9e7b9b38c57b43",
+        "Homebrew/homebrew-core": "017fb62972da0c90b70e163f71b8b0d8844315fc",
         "CLT": "12.5.0.22.9",
         "Xcode": "12.5",
         "macOS": "11.5.1"
