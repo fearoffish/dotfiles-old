@@ -2,7 +2,7 @@ local map = vim.api.nvim_set_keymap
 local cmd = vim.cmd
 
 -- general
-lvim.format_on_save = true
+lvim.format_on_save = false
 lvim.lint_on_save = true
 lvim.colorscheme = "dracula"
 lvim.auto_close_tree = 0
@@ -23,8 +23,8 @@ lvim.keys.normal_mode = {
 --   {']d', '<PageDown>'},
 --
 --   Navigate buffers
-  {'<Tab>', ':bnext<CR>'},
-  {'<S-Tab>', ':bprevious<CR>'},
+  -- {'<Tab>', ':bnext<CR>'},
+  -- {'<S-Tab>', ':bprevious<CR>'},
 -- }
 -- if you just want to augment the existing ones then use the utility function
 -- require("utils").add_keymap_insert_mode({ silent = true }, {
@@ -60,6 +60,13 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
+  {"lunarvim/colorschemes"},
+  {"folke/tokyonight.nvim"},
+  {
+    "ray-x/lsp_signature.nvim",
+    config = function() require"lsp_signature".on_attach() end,
+    event = "InsertEnter"
+  },
   {"sbdchd/neoformat"},
   {"vim-airline/vim-airline"},
   {"vim-airline/vim-airline-themes"},
@@ -98,7 +105,7 @@ lvim.plugins = {
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",
   },
-
+  {"LnL7/vim-nix"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -148,19 +155,3 @@ lvim.builtin.autopairs.on_config_done = function()
     endwise('def', 'end',nil, nil)
     })
 end
-
--- ruby solargraph
-local util = require("lspconfig/util")
-lvim.lang.ruby.lsp.setup = {
-    cmd = { "solargraph", "stdio" },
-    filetypes = { "ruby" },
-    init_options = {
-      formatting = false
-    },
-    root_dir = util.root_pattern("Gemfile", ".git"),
-    settings = {
-      solargraph = {
-        diagnostics = true
-      }
-    }
-}

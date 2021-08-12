@@ -1,6 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+ZSH_THEME="agnoster"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -24,25 +22,11 @@ path+=(${HOME}/.krew/bin(N-/))
 path+=(${HOME}/.cargo/bin(N-/))
 export PATH
 
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/homebrew/opt/openssl@1.1"
-export RUBY_CFLAGS="-w"
-# export RUBYOPT=-W:no-deprecated
-export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
-
-. /opt/homebrew/opt/asdf/asdf.sh
-
-# Hook direnv into your shell.
-export DIRENV_LOG_FORMAT=""
-eval "$(asdf exec direnv hook zsh)"
-direnv() { asdf exec direnv "$@"; }
-
 export ZSH="/Users/jamievandyke/.oh-my-zsh"
 
-plugins=(asdf rails git docker-compose common-aliases jsontools bundler kubectl sudo z)
+# plugins=(asdf rails git docker-compose common-aliases jsontools bundler kubectl sudo z)
 
 FPATH=/opt/homebrew/share/zsh/site-functions:$FPATH
-. $(pack completion --shell zsh)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,9 +37,8 @@ alias s="subl"
 alias bet="bundle exec terraspace"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-eval "$(starship init zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPS="--extended"
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export FZF_DEFAULT_OPS="--extended"
 
 if [ -e /Users/jamievandyke/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jamievandyke/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

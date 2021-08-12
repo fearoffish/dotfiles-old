@@ -1,44 +1,30 @@
 #!/usr/bin/env bash
 #
-# Thanks to https://github.com/JunichiSugiura/tutorials/tree/main/dotfiles
 #
 set -e
 
 # keep dat sudo alive
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# checking brew path to see bin file exists or not (x86 or arm64)
-if [ ! -f /usr/local/bin/brew ] && [ ! -f /opt/homebrew/bin/brew ]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+# install nix
+if [ ! -d /nix ]; then
+  sudo mv /etc/zprofile /etc/zprofile.orig
+  sudo mv /etc/zshrc /etc/zshrc.orig
+
+  sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
+  . ${HOME}/.nix-profile/etc/profile.d/nix.sh
+  mkdir -p /nix/var/nix/profiles/per-user/root/channels
+
+  nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
+  ./result/bin/darwin-installer
+  rm ./result
 fi
 
-LINE="$(brew --prefix)/bin/fish"
-FILE=/etc/shells
-grep -qF "$LINE" "$FILE" || echo "$LINE" | sudo tee -a "$FILE"
+nix-env -f '<nixpkgs>' -iA nixUnstable
+nix-channel --update
 
-# dotfiles
-CLONE_PATH=~/a
-if [ ! -d "$CLONE_PATH" ]; then
-    mkdir -p "$CLONE_PATH"
-fi
+# stow'em
+stow -v -d ~/a/dotfiles/stowage -t $HOME starship lvim gh git ctags ruby tmux iterm2 zsh nixpkgs
 
-# check whether dotfiles is already cloned or not
-if [ ! -d "$CLONE_PATH"/dotfiles ]; then
-    cd "$CLONE_PATH"
-    git clone git@github.com/fearoffish/dotfiles
-fi
-
-brew bundle -v --file "$CLONE_PATH"/dotfiles/Brewfile --no-upgrade
-
-# stow those dotfiles
-
-if [ ! -d ~/.config ]; then
-    mkdir ~/.config/
-fi
-
-stow -v -d "$CLONE_PATH"/dotfiles/packages -t $HOME fish starship lvim wezterm gh git ctags ruby tmux zsh iterm2
-
-# oh my zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-./script/macos
+echo "Done."
