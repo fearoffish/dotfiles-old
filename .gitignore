@@ -1,2 +1,3 @@
-/packages/lvim/.config/lvim/plugin/packer_compiled.lua
+/stowage/lvim/.config/lvim/plugin/packer_compiled.lua
 *.swp
+stowage/gh/.config/gh/hosts.yml
