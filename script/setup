@@ -19,9 +19,10 @@ if [ ! -d /nix ]; then
   nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
   ./result/bin/darwin-installer
   rm ./result
+  
+  nix-env -f '<nixpkgs>' -iA nixUnstable
 fi
 
-nix-env -f '<nixpkgs>' -iA nixUnstable
 nix-channel --update
 
 # stow'em
