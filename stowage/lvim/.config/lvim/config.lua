@@ -143,7 +143,6 @@ lvim.builtin.which_key.on_config_done = function()
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
     f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
   }
-  keys["F"] = { "<cmd>lua require('telescope').find_files({hidden=true})<cr>", "Find File (hidden)"}
 end
 
 -- Autopairs
@@ -155,3 +154,90 @@ lvim.builtin.autopairs.on_config_done = function()
     endwise('def', 'end',nil, nil)
     })
 end
+
+
+lvim.builtin.telescope.active = true
+lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git", "node_modules" }
+local get_telescope_mappings = function()
+	local actions = require("telescope.actions")
+	return {
+		i = {
+			["<C-n>"] = actions.cycle_history_next,
+			["<C-p>"] = actions.cycle_history_prev,
+			["<C-c>"] = actions.close,
+			["<C-j>"] = actions.move_selection_next,
+			["<C-k>"] = actions.move_selection_previous,
+			["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+			["<CR>"] = actions.select_default + actions.center,
+			["<c-x>"] = false,
+		},
+		n = {
+			["<C-j>"] = actions.move_selection_next,
+			["<C-k>"] = actions.move_selection_previous,
+			["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+		},
+	}
+end
+lvim.builtin.telescope.defaults.mappings = get_telescope_mappings()
+
+-- *
+-- Dashboard
+-- *
+lvim.builtin.dashboard.active = true
+lvim.builtin.dashboard.custom_section.a.command = "Telescope find_files find_command=rg,--ignore,--hidden,--files"
+
+-- *
+-- Terminal
+-- *
+lvim.builtin.terminal.active = true
+lvim.builtin.terminal.shading_factor = 1
+
+-- *
+-- Nvimtree
+-- *
+lvim.builtin.nvimtree.side = "left"
+lvim.builtin.nvimtree.show_icons.git = 1
+lvim.builtin.nvimtree.hide_dotfiles = 0
+
+-- *
+-- Treesitter
+-- *
+lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.matchup.enable = true
+lvim.builtin.treesitter.context_commentstring.enable = true
+
+-- *
+-- Whichkey
+-- *
+lvim.builtin.which_key.active = true
+lvim.builtin.which_key.mappings["w"] = { "<cmd>w<CR>", "Save" }
+lvim.builtin.which_key.mappings["W"] = { "<cmd>w!<CR>", "Force Save" }
+lvim.builtin.which_key.mappings["q"] = { "<cmd>q<CR>", "Quit" }
+lvim.builtin.which_key.mappings["Q"] = { "<cmd>q!<CR>", "Force Quit" }
+lvim.builtin.which_key.mappings["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" }
+lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer" }
+lvim.builtin.which_key.mappings["s"]["f"] = {
+	"<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>",
+	"Find File",
+}
+lvim.builtin.which_key.mappings["s"]["m"] = { "<cmd>Telescope marks<cr>", "Search Marks" }
+lvim.builtin.which_key.mappings["s"]["g"] = { "<cmd>Telescope git_files<cr>", "Search Git Files" }
+lvim.builtin.which_key.mappings["t"] = {
+	name = "Toggle",
+	h = { "<cmd>set hlsearch!<CR>", "Toggle Highlight" },
+	q = { "<cmd>call QuickFixToggle()<CR>", "Toggle Quick Fix List" },
+	b = { "<cmd>GitBlameToggle<CR>", "Toggle Git Blame" },
+	t = { "<cmd>Twilight<CR>", "Toggle Twilight" },
+	i = { "<cmd>IndentBlanklineToggle<CR>", "Toggle Indent Line" },
+	x = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" },
+}
+lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen Mode" }
+lvim.builtin.which_key.mappings["x"] = {
+	name = "Trouble",
+	w = { "<cmd>Trouble lsp_workspace_diagnostics<CR>", "Trouble Workspaces" },
+	d = { "<cmd>Trouble lsp_document_diagnostics<CR>", "Trouble Document" },
+	l = { "<cmd>Trouble loclist<CR>", "Trouble Location List" },
+	q = { "<cmd>Trouble quickfix<CR>", "Trouble Quickfix List" },
+}

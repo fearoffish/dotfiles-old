@@ -24,9 +24,7 @@ export PATH
 
 export ZSH="/Users/jamievandyke/.oh-my-zsh"
 
-# plugins=(asdf rails git docker-compose common-aliases jsontools bundler kubectl sudo z)
-
-FPATH=/opt/homebrew/share/zsh/site-functions:$FPATH
+plugins=(rails git docker-compose common-aliases jsontools bundler kubectl sudo z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -38,7 +36,10 @@ alias bet="bundle exec terraspace"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# export FZF_DEFAULT_OPS="--extended"
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
+export FZF_DEFAULT_OPS="--extended"
 
 if [ -e /Users/jamievandyke/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jamievandyke/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

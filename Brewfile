@@ -2,13 +2,13 @@ tap 'afnanenayet/tap'
 tap 'uptech/homebrew-oss'
 tap 'homebrew/cask-fonts'
 
+brew 'bitwarden-cli'
+
 cask '1password'
 cask 'altair-graphql-client'
 cask 'around'
-cask 'bartender'
 cask 'carbon-copy-cloner'
 cask 'docker'
-cask 'epoccam'
 cask 'font-fantasque-sans-mono'
 cask 'font-fira-code-nerd-font'
 cask 'font-hack-nerd-font'
@@ -17,11 +17,8 @@ cask 'font-powerline-symbols'
 cask 'font-source-code-pro'
 cask 'istat-menus'
 cask 'keybase'
-cask 'keycue'
 cask 'launchbar'
 cask 'ledger-live'
-cask 'lulu'
-cask 'multi'
 cask 'notion'
 cask 'parallels'
 cask 'raycast'
@@ -55,11 +52,9 @@ mas 'Overlap', id: 1516950324
 mas 'Pages', id: 409201541
 mas 'Paprika Recipe Manager 3', id: 1303222628
 mas 'Parcel', id: 639968404
-mas 'Reeder', id: 1529448980
-mas 'Save to Raindrop.io', id: 957810159
+mas 'Save to Raindrop.io', id: 1549370672
 mas 'Things', id: 904280696
 mas 'Tweetbot', id: 1384080005
-mas 'Twitter', id: 1482454543
 mas 'com.echodot.Red', id: 1491764008
 mas 'iMovie', id: 408981434
 mas 'iNet Network Scanner', id: 403304796

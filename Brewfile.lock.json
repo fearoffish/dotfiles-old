@@ -1246,6 +1246,40 @@
             }
           }
         }
+      },
+      "bitwarden-cli": {
+        "version": "1.17.1",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_big_sur": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:00bc4e335d12186bf65e6f5fc26a5887815124489dcd8bfad4fcf1ac51e9f3d0",
+              "sha256": "00bc4e335d12186bf65e6f5fc26a5887815124489dcd8bfad4fcf1ac51e9f3d0"
+            },
+            "big_sur": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:ad7323a78e679d8d7eb7b8a597e6f70435b21dc20b9819d21bc29d535dd908a5",
+              "sha256": "ad7323a78e679d8d7eb7b8a597e6f70435b21dc20b9819d21bc29d535dd908a5"
+            },
+            "catalina": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:ad7323a78e679d8d7eb7b8a597e6f70435b21dc20b9819d21bc29d535dd908a5",
+              "sha256": "ad7323a78e679d8d7eb7b8a597e6f70435b21dc20b9819d21bc29d535dd908a5"
+            },
+            "mojave": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:ad7323a78e679d8d7eb7b8a597e6f70435b21dc20b9819d21bc29d535dd908a5",
+              "sha256": "ad7323a78e679d8d7eb7b8a597e6f70435b21dc20b9819d21bc29d535dd908a5"
+            },
+            "x86_64_linux": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:0c38d12c4a7eb2d462728b8688699202eaea6de289ae9afbe72cbd1a0d0af9e8",
+              "sha256": "0c38d12c4a7eb2d462728b8688699202eaea6de289ae9afbe72cbd1a0d0af9e8"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -1416,6 +1450,12 @@
         "options": {
           "full_name": "raycast"
         }
+      },
+      "bitwarden": {
+        "version": "1.27.1",
+        "options": {
+          "full_name": "bitwarden"
+        }
       }
     },
     "mas": {
@@ -1439,10 +1479,7 @@
         "id": "975937182",
         "version": "3.4.3"
       },
-      "Hologram Desktop": {
-        "id": "1529001798",
-        "version": "1.7.0"
-      },
+      "Hologram Desktop": null,
       "Journey": {
         "id": "1489704689",
         "version": "0.210729.164"
@@ -1459,10 +1496,7 @@
         "id": "409203825",
         "version": "11.1"
       },
-      "Overlap": {
-        "id": "1516950324",
-        "version": "1.2.2"
-      },
+      "Overlap": null,
       "Parcel": {
         "id": "639968404",
         "version": "7.0.4"
@@ -1485,7 +1519,7 @@
       },
       "Craft": {
         "id": "1487937127",
-        "version": "1.6.9"
+        "version": "1.6.11"
       },
       "GarageBand": {
         "id": "682658836",
@@ -1530,7 +1564,7 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.2.6",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "cfbb7e0b1221f87bb78f36c3967bfbb8bb0c0e89",
+        "Homebrew/homebrew-core": "511599504f97e45976b5fafbf5f5c4ccdce2c267",
         "CLT": "12.5.0.22.9",
         "Xcode": "12.5",
         "macOS": "11.5.1"
