@@ -1,16 +1,28 @@
 #!/usr/bin/env bash
 #
 #
-set -e
+# set -e
 
 # keep dat sudo alive
+echo 'We need sudo...gimme!'
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+which brew
+if [ $? -eq 0 ]; then
+  echo "Homebrew already installed"
+else
+  echo "Installing homebrew and xcode tools"
+  xcode-select --install
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+[[ -z ${SKIP_BUNDLER} ]] && brew bundle || echo "Skipping bundler"
+
 # stow'em
-stow -v -d ~/a/dotfiles/stowage -t $HOME lvim gh git ctags ruby tmux iterm2 zsh nixpkgs
+stow -v -d ~/a/dotfiles/stowage -t $HOME lvim gh git ctags ruby tmux iterm2 nixpkgs
 
 # install nix
-nix --version
+which nix
 if [ $? -eq 0 ]; then
   echo 'nix is already installed (skipping installation)'
 else
@@ -21,17 +33,17 @@ else
   . ${HOME}/.nix-profile/etc/profile.d/nix.sh
   mkdir -p /nix/var/nix/profiles/per-user/root/channels
 
-  nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-  ./result/bin/darwin-installer
-  rm ./result
-  
   nix-env -f '<nixpkgs>' -iA nixUnstable
 
-  nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager                                                                                                                      ~/a/dotfiles
+  nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
   nix-channel --update
   nix-shell '<home-manager>' -A install
 fi
 
+rm ~/.zshrc
 home-manager switch
+
+# Lunarvim
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/LunarVim/rolling/utils/bin/install-latest-neovim)
 
 echo "Done."

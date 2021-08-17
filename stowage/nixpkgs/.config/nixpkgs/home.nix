@@ -1,6 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, inputs, system, ... }:
 
-{
+let
+  targets.genericLinux.enable = true;
+
+in
+
+rec {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "jamievandyke";
@@ -21,22 +26,35 @@
     path = "…";
   };
 
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
   home.packages = [
     pkgs.asdf-vm
     pkgs.bat
     pkgs.bundix
     pkgs.coreutils
+    pkgs.curl
     pkgs.fd
     pkgs.fzf
+    pkgs.luajit
     pkgs.man-db
-    pkgs.neovim
+    pkgs.nodejs
+    pkgs.python39
+    pkgs.python39Packages.pip-tools
     pkgs.ripgrep
     pkgs.gh
     pkgs.jq
-    pkgs.neovim
     pkgs.ruby_2_6
-    pkgs.zoxide
+    pkgs.terraform
+    pkgs.terraform-ls
+    pkgs.tree-sitter
     pkgs.starship
+    pkgs.yarn
+    pkgs.zoxide
   ];
 
   programs.zsh = {
@@ -46,6 +64,7 @@
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
         . ~/.nix-profile/etc/profile.d/nix.sh
       fi
+      export PATH=$PATH:/opt/homebrew/bin
       '';
     oh-my-zsh = {
       enable = true;
