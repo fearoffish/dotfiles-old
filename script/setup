@@ -6,9 +6,14 @@ set -e
 # keep dat sudo alive
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+# stow'em
+stow -v -d ~/a/dotfiles/stowage -t $HOME lvim gh git ctags ruby tmux iterm2 zsh nixpkgs
 
 # install nix
-if [ ! -d /nix ]; then
+nix --version
+if [ $? -eq 0 ]; then
+  echo 'nix is already installed (skipping installation)'
+else
   sudo mv /etc/zprofile /etc/zprofile.orig
   sudo mv /etc/zshrc /etc/zshrc.orig
 
@@ -27,7 +32,6 @@ if [ ! -d /nix ]; then
   nix-shell '<home-manager>' -A install
 fi
 
-# stow'em
-stow -v -d ~/a/dotfiles/stowage -t $HOME starship lvim gh git ctags ruby tmux iterm2 zsh nixpkgs
+home-manager switch
 
 echo "Done."

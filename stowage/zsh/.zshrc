@@ -24,7 +24,7 @@ export PATH
 
 export ZSH="/Users/jamievandyke/.oh-my-zsh"
 
-plugins=(rails git docker-compose common-aliases jsontools bundler kubectl sudo z)
+plugins=(rails git docker-compose common-aliases jsontools bundler kubectl sudo z nix-zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
