@@ -26,20 +26,17 @@ rec {
     path = "…";
   };
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
   home.packages = [
     pkgs.asdf-vm
+    pkgs.awscli2
     pkgs.bat
     pkgs.bundix
+    pkgs.cargo
     pkgs.coreutils
     pkgs.curl
     pkgs.fd
     pkgs.fzf
+    pkgs.git
     pkgs.luajit
     pkgs.man-db
     pkgs.nodejs
@@ -64,7 +61,7 @@ rec {
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
         . ~/.nix-profile/etc/profile.d/nix.sh
       fi
-      export PATH=$PATH:/opt/homebrew/bin
+      export PATH=$PATH:/usr/local/bin:/opt/homebrew/bin
       '';
     oh-my-zsh = {
       enable = true;
@@ -94,13 +91,7 @@ rec {
     # Configuration written to ~/.config/starship.toml
     settings = {
       add_newline = false;
-
-      # character = {
-      #   success_symbol = "[➜](bold green)";
-      #   error_symbol = "[➜](bold red)";
-      # };
-
-      # package.disabled = true;
+      
     };
   };
 }

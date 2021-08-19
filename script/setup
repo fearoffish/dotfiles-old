@@ -19,7 +19,7 @@ fi
 [[ -z ${SKIP_BUNDLER} ]] && brew bundle || echo "Skipping bundler"
 
 # stow'em
-stow -v -d ~/a/dotfiles/stowage -t $HOME lvim gh git ctags ruby tmux iterm2 nixpkgs
+stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 nixpkgs
 
 # install nix
 which nix
@@ -45,5 +45,7 @@ home-manager switch
 
 # Lunarvim
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/LunarVim/rolling/utils/bin/install-latest-neovim)
+rm -rf ~/.config/lvim/*
+stow -v -d ~/a/dotfiles/stowage -t $HOME lvim
 
 echo "Done."

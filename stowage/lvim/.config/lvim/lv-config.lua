@@ -16,21 +16,16 @@ cmd("set inccommand=nosplit")
 
 -- keymappings
 lvim.leader = "space"
--- overwrite the key-mappings provided by LunarVim for any mode, or leave it empty to keep them
-lvim.keys.normal_mode = {
---   Page down/up
---   {'[d', '<PageUp>'},
---   {']d', '<PageDown>'},
---
---   Navigate buffers
-  -- {'<Tab>', ':bnext<CR>'},
-  -- {'<S-Tab>', ':bprevious<CR>'},
--- }
--- if you just want to augment the existing ones then use the utility function
--- require("utils").add_keymap_insert_mode({ silent = true }, {
--- { "<C-s>", ":w<cr>" },
--- { "<C-c>", "<ESC>" },
-}
+lvim.keys.normal_mode["<F2>"] = "<cmd>lua require'core.nvimtree'.toggle_tree()<cr>"
+lvim.keys.normal_mode["<F3>"] = "<cmd>SymbolsOutline<cr>"
+lvim.keys.normal_mode["<F5>"] = "<cmd>FzfLua files<cr>"
+lvim.keys.normal_mode["<F6>"] = "<cmd>FzfLua grep<cr>"
+lvim.keys.normal_mode["<F7>"] = "<cmd>FzfLua grep_cword<cr>"
+lvim.keys.normal_mode["<F9>"] = "<cmd>ZenMode<cr>"
+lvim.keys.normal_mode["<A-l>"] = ":bnext<cr>"
+lvim.keys.normal_mode["<A-h>"] = ":bprevious<cr>"
+lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+
 -- you can also use the native vim way directly
 -- vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
 cmd(':tnoremap <Esc> <C-\\><C-n>')
@@ -61,7 +56,6 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- Additional Plugins
 lvim.plugins = {
   {"lunarvim/colorschemes"},
-  {"folke/tokyonight.nvim"},
   {
     "ray-x/lsp_signature.nvim",
     config = function() require"lsp_signature".on_attach() end,
@@ -78,15 +72,12 @@ lvim.plugins = {
       require("lv-hop").config()
     end,
   },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-
-  },
+  { "nvim-treesitter/nvim-treesitter-textobjects"},
   {"p00f/nvim-ts-rainbow"},
   {"beauwilliams/focus.nvim"},
   {"dag/vim-fish"},
   {"nvim-telescope/telescope-frecency.nvim"},
-  {"TimUntersberger/neogit"},
+  -- {"TimUntersberger/neogit"},
   {"hashivim/vim-terraform"},
   {
     "windwp/nvim-spectre",
@@ -106,6 +97,10 @@ lvim.plugins = {
     event = "InsertEnter",
   },
   {"LnL7/vim-nix"},
+  {
+  "folke/todo-comments.nvim",
+    event = "BufRead",
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -128,23 +123,6 @@ vnoremap <leader>d "_d
 vnoremap p "_dP
 ]]
 
--- Additional Leader bindings for WhichKey
-lvim.builtin.which_key.on_config_done = function()
-  local keys = lvim.builtin.which_key.mappings
-
-  keys.t = {
-    name = "Terminal",
-    h = { "<cmd>split term://fish | resize 28 <cr>", "Horizontal" },
-    v = { "<cmd>vsplit term://fish <cr>", "Vertical" },
-  }
-  keys.r = {
-    name = "Replace",
-    r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-    w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
-    f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
-  }
-end
-
 -- Autopairs
 lvim.builtin.autopairs.on_config_done = function()
   local autopairs = require('nvim-autopairs')
@@ -157,7 +135,8 @@ end
 
 
 lvim.builtin.telescope.active = true
-lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git", "node_modules" }
+lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git/", "node_modules" }
+lvim.builtin.telescope.defaults.find_command = { 'rg', '--hidden', '--ignore', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' }
 local get_telescope_mappings = function()
 	local actions = require("telescope.actions")
 	return {
@@ -184,7 +163,7 @@ lvim.builtin.telescope.defaults.mappings = get_telescope_mappings()
 -- Dashboard
 -- *
 lvim.builtin.dashboard.active = true
-lvim.builtin.dashboard.custom_section.a.command = "Telescope find_files find_command=rg,--ignore,--hidden,--files"
+-- lvim.builtin.dashboard.custom_section.a.command = "Telescope find_files find_command=rg,--ignore,--hidden,--files"
 
 -- *
 -- Terminal
@@ -219,7 +198,7 @@ lvim.builtin.which_key.mappings["Q"] = { "<cmd>q!<CR>", "Force Quit" }
 lvim.builtin.which_key.mappings["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" }
 lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer" }
 lvim.builtin.which_key.mappings["s"]["f"] = {
-	"<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>",
+	"<cmd>Telescope find_files<CR>",
 	"Find File",
 }
 lvim.builtin.which_key.mappings["s"]["m"] = { "<cmd>Telescope marks<cr>", "Search Marks" }
@@ -232,6 +211,10 @@ lvim.builtin.which_key.mappings["t"] = {
 	t = { "<cmd>Twilight<CR>", "Toggle Twilight" },
 	i = { "<cmd>IndentBlanklineToggle<CR>", "Toggle Indent Line" },
 	x = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" },
+}
+lvim.builtin.which_key.mappings["T"] = {
+  h = { "<cmd>split term://fish | resize 28 <cr>", "Horizontal" },
+  v = { "<cmd>vsplit term://fish <cr>", "Vertical" },
 }
 lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen Mode" }
 lvim.builtin.which_key.mappings["x"] = {
