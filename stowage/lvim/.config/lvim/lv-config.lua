@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+-- local map = vim.api.nvim_set_keymap
 local cmd = vim.cmd
 
 -- general
@@ -42,6 +42,10 @@ lvim.builtin.treesitter.ensure_installed = "all"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
+-- compe settings
+lvim.builtin.compe.allow_prefix_unmatch = false
+lvim.builtin.compe.autocomplete = true
+
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
 -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
@@ -77,7 +81,7 @@ lvim.plugins = {
   {"beauwilliams/focus.nvim"},
   {"dag/vim-fish"},
   {"nvim-telescope/telescope-frecency.nvim"},
-  -- {"TimUntersberger/neogit"},
+  {"TimUntersberger/neogit"},
   {"hashivim/vim-terraform"},
   {
     "windwp/nvim-spectre",
@@ -100,6 +104,96 @@ lvim.plugins = {
   {
   "folke/todo-comments.nvim",
     event = "BufRead",
+  },
+  {
+  "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+    require("numb").setup {
+      show_numbers = true, -- Enable 'number' for the window while peeking
+      show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+    }
+    end,
+  },
+  {
+  "camspiers/snap",
+    rocks = "fzy",
+    config = function()
+      local snap = require "snap"
+      local layout = snap.get("layout").bottom
+      local file = snap.config.file:with { consumer = "fzy", layout = layout }
+      local vimgrep = snap.config.vimgrep:with { layout = layout }
+      snap.register.command("find_files", file { producer = "ripgrep.file" })
+      snap.register.command("buffers", file { producer = "vim.buffer" })
+      snap.register.command("oldfiles", file { producer = "vim.oldfile" })
+      snap.register.command("live_grep", vimgrep {})
+    end,
+  },
+  {
+  "nvim-telescope/telescope-project.nvim",
+    event = "BufWinEnter",
+    setup = function()
+      vim.cmd [[packadd telescope.nvim]]
+    end,
+  },
+  {
+  "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+  },
+  {
+  "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+    require('neoscroll').setup({
+          -- All these keys will be mapped to their corresponding default scrolling animation
+          mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+          '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+          hide_cursor = true,          -- Hide cursor while scrolling
+          stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+          use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+          respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+          cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+          easing_function = nil,        -- Default easing function
+          pre_hook = nil,              -- Function to run before the scrolling animation starts
+          post_hook = nil,              -- Function to run after the scrolling animation ends
+          })
+    end
+  },
+  {
+  "folke/persistence.nvim",
+      event = "VimEnter",
+      module = "persistence",
+      config = function()
+        require("persistence").setup {
+          dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
+          options = { "buffers", "curdir", "tabpages", "winsize" },
+        }
+    end,
+  },
+  {
+  "tpope/vim-surround",
+    keys = {"c", "d", "y"}
+  },
+  {
+  "tpope/vim-rails",
+    cmd = {
+      "Eview",
+      "Econtroller",
+      "Emodel",
+      "Smodel",
+      "Sview",
+      "Scontroller",
+      "Vmodel",
+      "Vview",
+      "Vcontroller",
+      "Tmodel",
+      "Tview",
+      "Tcontroller",
+      "Rails",
+      "Generate",
+      "Runner",
+      "Extract"
+    }
   },
 }
 
@@ -196,11 +290,8 @@ lvim.builtin.which_key.mappings["W"] = { "<cmd>w!<CR>", "Force Save" }
 lvim.builtin.which_key.mappings["q"] = { "<cmd>q<CR>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { "<cmd>q!<CR>", "Force Quit" }
 lvim.builtin.which_key.mappings["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" }
-lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer" }
-lvim.builtin.which_key.mappings["s"]["f"] = {
-	"<cmd>Telescope find_files<CR>",
-	"Find File",
-}
+lvim.builtin.which_key.mappings["b"]["F"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer" }
+lvim.builtin.which_key.mappings["s"]["f"] = {	"<cmd>Telescope find_files hidden=true<CR>", "Find File" }
 lvim.builtin.which_key.mappings["s"]["m"] = { "<cmd>Telescope marks<cr>", "Search Marks" }
 lvim.builtin.which_key.mappings["s"]["g"] = { "<cmd>Telescope git_files<cr>", "Search Git Files" }
 lvim.builtin.which_key.mappings["t"] = {

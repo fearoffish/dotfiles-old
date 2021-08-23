@@ -34,23 +34,24 @@ rec {
     pkgs.cargo
     pkgs.coreutils
     pkgs.curl
+    pkgs.emacs
     pkgs.fd
     pkgs.fzf
     pkgs.git
     pkgs.luajit
     pkgs.man-db
     pkgs.nodejs
-    pkgs.python39
-    pkgs.python39Packages.pip-tools
     pkgs.ripgrep
     pkgs.gh
     pkgs.jq
     pkgs.ruby_2_6
+    pkgs.subversion
     pkgs.terraform
     pkgs.terraform-ls
     pkgs.tree-sitter
     pkgs.starship
     pkgs.yarn
+    pkgs.xz
     pkgs.zoxide
   ];
 
@@ -61,7 +62,7 @@ rec {
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
         . ~/.nix-profile/etc/profile.d/nix.sh
       fi
-      export PATH=$PATH:/usr/local/bin:/opt/homebrew/bin
+      export PATH=~/.local/bin:$PATH:/usr/local/bin:/opt/homebrew/bin
       '';
     oh-my-zsh = {
       enable = true;

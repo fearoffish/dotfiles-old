@@ -2,10 +2,7 @@ tap 'afnanenayet/tap'
 tap 'uptech/homebrew-oss'
 tap 'homebrew/cask-fonts'
 
-brew 'bitwarden-cli'
-
 cask '1password'
-cask 'altair-graphql-client'
 cask 'around'
 cask 'carbon-copy-cloner'
 cask 'docker'
@@ -15,12 +12,10 @@ cask 'font-hack-nerd-font'
 cask 'font-inconsolata'
 cask 'font-powerline-symbols'
 cask 'font-source-code-pro'
-cask 'istat-menus'
 cask 'keybase'
-cask 'launchbar'
 cask 'ledger-live'
 cask 'notion'
-cask 'parallels'
+cask 'obsidian'
 cask 'raycast'
 cask 'setapp'
 cask 'signal'
@@ -39,7 +34,6 @@ cask 'font-powerline-symbols'
 mas 'Affinity Designer', id: 824171161
 mas 'Affinity Photo', id: 824183456
 mas 'ColorSlurp', id: 1287239339
-mas 'Craft', id: 1487937127
 mas 'Edison Mail', id: 1489591003
 mas 'Fantastical', id: 975937182
 mas 'GarageBand', id: 682658836

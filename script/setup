@@ -44,7 +44,7 @@ rm ~/.zshrc
 home-manager switch
 
 # Lunarvim
-bash <(curl -s https://raw.githubusercontent.com/lunarvim/LunarVim/rolling/utils/bin/install-latest-neovim)
+LVBRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
 rm -rf ~/.config/lvim/*
 stow -v -d ~/a/dotfiles/stowage -t $HOME lvim
 
