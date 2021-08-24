@@ -212,7 +212,7 @@ lvim.plugins = {
         -- refer to the configuration section below
       }
     end
-  }
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -334,3 +334,25 @@ lvim.builtin.which_key.mappings["x"] = {
 	l = { "<cmd>Trouble loclist<CR>", "Trouble Location List" },
 	q = { "<cmd>Trouble quickfix<CR>", "Trouble Quickfix List" },
 }
+
+-- vim.api.nvim_exec(
+--   [[
+--     function AddTerminalNavigation()
+-- 
+--     echom &filetype
+--     if &filetype ==# 'FTerm'
+--         tnoremap <Esc> q
+--         tnoremap <C-v><Esc> <Esc>
+--     endif
+--     if &filetype ==# 'toggleterm'
+--         tnoremap <Esc> q
+--         tnoremap <C-v><Esc> <Esc>
+--     endif
+-- endfunction
+--   ]]
+-- , true)
+-- 
+-- lvim.autocommands.custom_groups = {
+--    {"TermEnter", "lazygit", "call AddTerminalNavigation()"}
+-- }
+
