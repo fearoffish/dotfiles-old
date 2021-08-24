@@ -2,26 +2,27 @@
 local cmd = vim.cmd
 
 -- general
-lvim.format_on_save = false
-lvim.lint_on_save = true
-lvim.colorscheme = "dracula"
-lvim.auto_close_tree = 0
-lvim.wrap_lines = false
-lvim.timeoutlen = 100
+lvim.format_on_save     = false
+lvim.lint_on_save       = true
+lvim.colorscheme        = "dracula"
+lvim.auto_close_tree    = 0
+lvim.wrap_lines         = false
+lvim.timeoutlen         = 100
 lvim.document_highlight = true
-lvim.ignore_case = true
-lvim.smart_case = true
+lvim.ignore_case        = true
+lvim.smart_case         = true
 cmd("set relativenumber")
 cmd("set inccommand=nosplit")
 
 -- keymappings
 lvim.leader = "space"
-lvim.keys.normal_mode["<F2>"] = "<cmd>lua require'core.nvimtree'.toggle_tree()<cr>"
-lvim.keys.normal_mode["<F3>"] = "<cmd>SymbolsOutline<cr>"
-lvim.keys.normal_mode["<F5>"] = "<cmd>FzfLua files<cr>"
-lvim.keys.normal_mode["<F6>"] = "<cmd>FzfLua grep<cr>"
-lvim.keys.normal_mode["<F7>"] = "<cmd>FzfLua grep_cword<cr>"
-lvim.keys.normal_mode["<F9>"] = "<cmd>ZenMode<cr>"
+
+lvim.keys.normal_mode["<F2>"]  = "<cmd>lua require'core.nvimtree'.toggle_tree()<cr>"
+lvim.keys.normal_mode["<F3>"]  = "<cmd>SymbolsOutline<cr>"
+lvim.keys.normal_mode["<F5>"]  = "<cmd>FzfLua files<cr>"
+lvim.keys.normal_mode["<F6>"]  = "<cmd>FzfLua grep<cr>"
+lvim.keys.normal_mode["<F7>"]  = "<cmd>FzfLua grep_cword<cr>"
+lvim.keys.normal_mode["<F9>"]  = "<cmd>ZenMode<cr>"
 lvim.keys.normal_mode["<A-l>"] = ":bnext<cr>"
 lvim.keys.normal_mode["<A-h>"] = ":bprevious<cr>"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
@@ -32,19 +33,19 @@ cmd(':tnoremap <Esc> <C-\\><C-n>')
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = true
-lvim.builtin.terminal.active = true
-lvim.builtin.nvimtree.side = "left"
+lvim.builtin.dashboard.active        = true
+lvim.builtin.terminal.active         = true
+lvim.builtin.nvimtree.side           = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = "all"
-lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.ensure_installed  = "all"
+lvim.builtin.treesitter.ignore_install    = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- compe settings
 lvim.builtin.compe.allow_prefix_unmatch = false
-lvim.builtin.compe.autocomplete = true
+lvim.builtin.compe.autocomplete         = true
 
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
@@ -78,17 +79,16 @@ lvim.plugins = {
   },
   { "nvim-treesitter/nvim-treesitter-textobjects"},
   {"p00f/nvim-ts-rainbow"},
-  {"beauwilliams/focus.nvim"},
+  -- {"beauwilliams/focus.nvim"},
   {"dag/vim-fish"},
   {"nvim-telescope/telescope-frecency.nvim"},
-  {"TimUntersberger/neogit"},
   {"hashivim/vim-terraform"},
   {
     "windwp/nvim-spectre",
     event = "BufRead",
     config = function()
       require("spectre").setup()
-      end,
+    end,
   },
   {
     "tzachar/compe-tabnine",
@@ -116,20 +116,6 @@ lvim.plugins = {
     end,
   },
   {
-  "camspiers/snap",
-    rocks = "fzy",
-    config = function()
-      local snap = require "snap"
-      local layout = snap.get("layout").bottom
-      local file = snap.config.file:with { consumer = "fzy", layout = layout }
-      local vimgrep = snap.config.vimgrep:with { layout = layout }
-      snap.register.command("find_files", file { producer = "ripgrep.file" })
-      snap.register.command("buffers", file { producer = "vim.buffer" })
-      snap.register.command("oldfiles", file { producer = "vim.oldfile" })
-      snap.register.command("live_grep", vimgrep {})
-    end,
-  },
-  {
   "nvim-telescope/telescope-project.nvim",
     event = "BufWinEnter",
     setup = function()
@@ -144,30 +130,29 @@ lvim.plugins = {
   "karb94/neoscroll.nvim",
     event = "WinScrolled",
     config = function()
-    require('neoscroll').setup({
-          -- All these keys will be mapped to their corresponding default scrolling animation
-          mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
-          '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
-          hide_cursor = true,          -- Hide cursor while scrolling
-          stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-          use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-          respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-          cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-          easing_function = nil,        -- Default easing function
-          pre_hook = nil,              -- Function to run before the scrolling animation starts
-          post_hook = nil,              -- Function to run after the scrolling animation ends
-          })
+      require('neoscroll').setup({
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = {'<c-u>', '<c-d>', '<c-b>', '<c-f>', '<c-y>', '<c-e>', 'zt', 'zz', 'zb'},
+        hide_cursor = true,          -- hide cursor while scrolling
+        stop_eof = true,             -- stop at <eof> when scrolling downwards
+        use_local_scrolloff = false, -- use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false,   -- stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- the cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil,        -- default easing function
+        pre_hook = nil,              -- function to run before the scrolling animation starts
+        post_hook = nil,              -- function to run after the scrolling animation ends
+      })
     end
   },
   {
   "folke/persistence.nvim",
-      event = "VimEnter",
-      module = "persistence",
-      config = function()
-        require("persistence").setup {
-          dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
-          options = { "buffers", "curdir", "tabpages", "winsize" },
-        }
+    event  = "VimEnter",
+    module = "persistence",
+    config = function()
+      require("persistence").setup {
+        dir     = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
+        options = { "buffers", "curdir", "tabpages", "winsize" },
+      }
     end,
   },
   {
@@ -195,6 +180,39 @@ lvim.plugins = {
       "Extract"
     }
   },
+  {
+    "AckslD/nvim-neoclip.lua",
+    config = function()
+      require('neoclip').setup()
+    end,
+ },
+ {
+  "f-person/git-blame.nvim",
+    event = "BufRead",
+    config = function()
+      vim.cmd "highlight default link gitblame SpecialComment"
+      vim.g.gitblame_enabled = 0
+    end,
+  },
+  { 'mg979/vim-visual-multi' },
+  {
+    'junegunn/vim-easy-align',
+    config = function ()
+      vim.cmd 'xmap ga <Plug>(EasyAlign)'
+      vim.cmd 'nmap ga <Plug>(EasyAlign)'
+    end
+  },
+  {
+  "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -290,6 +308,7 @@ lvim.builtin.which_key.mappings["W"] = { "<cmd>w!<CR>", "Force Save" }
 lvim.builtin.which_key.mappings["q"] = { "<cmd>q<CR>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { "<cmd>q!<CR>", "Force Quit" }
 lvim.builtin.which_key.mappings["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" }
+lvim.builtin.which_key.mappings["p"] = { "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>", "Projects" }
 lvim.builtin.which_key.mappings["b"]["F"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer" }
 lvim.builtin.which_key.mappings["s"]["f"] = {	"<cmd>Telescope find_files hidden=true<CR>", "Find File" }
 lvim.builtin.which_key.mappings["s"]["m"] = { "<cmd>Telescope marks<cr>", "Search Marks" }
@@ -304,8 +323,8 @@ lvim.builtin.which_key.mappings["t"] = {
 	x = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" },
 }
 lvim.builtin.which_key.mappings["T"] = {
-  h = { "<cmd>split term://fish | resize 28 <cr>", "Horizontal" },
-  v = { "<cmd>vsplit term://fish <cr>", "Vertical" },
+  h = { "<cmd>split term://zsh | resize 28 <cr>", "Horizontal" },
+  v = { "<cmd>vsplit term://zsh <cr>", "Vertical" },
 }
 lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen Mode" }
 lvim.builtin.which_key.mappings["x"] = {
