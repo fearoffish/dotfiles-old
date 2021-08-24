@@ -38,6 +38,7 @@ rec {
     pkgs.fd
     pkgs.fzf
     pkgs.git
+    pkgs.lazygit
     pkgs.luajit
     pkgs.man-db
     pkgs.nodejs
