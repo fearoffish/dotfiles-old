@@ -19,7 +19,7 @@ fi
 [[ -z ${SKIP_BUNDLER} ]] && brew bundle || echo "Skipping bundler"
 
 # stow'em
-stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 nixpkgs
+stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 nixpkgs npm
 
 # install nix
 which nix
