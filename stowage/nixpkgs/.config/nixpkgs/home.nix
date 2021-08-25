@@ -101,4 +101,6 @@ rec {
       
     };
   };
+
+  programs.go.enable = true;
 }
