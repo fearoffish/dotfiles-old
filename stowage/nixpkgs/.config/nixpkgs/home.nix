@@ -46,6 +46,7 @@ rec {
     pkgs.ripgrep
     pkgs.rnix-lsp
     pkgs.gh
+    pkgs.glab
     pkgs.jq
     pkgs.ruby_2_6
     pkgs.subversion
