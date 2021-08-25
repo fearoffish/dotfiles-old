@@ -81,6 +81,9 @@ rec {
     };
     shellAliases = {
       bet = "bundle exec terraspace";
+      lg = "lazygit";
+      hs = "home-manager switch";
+      hm = "home-manager";
     };
   };
 
