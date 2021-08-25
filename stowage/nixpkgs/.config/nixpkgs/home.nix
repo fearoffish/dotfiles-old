@@ -39,10 +39,12 @@ rec {
     pkgs.fzf
     pkgs.git
     pkgs.lazygit
+    pkgs.lazydocker
     pkgs.luajit
     pkgs.man-db
     pkgs.nodejs
     pkgs.ripgrep
+    pkgs.rnix-lsp
     pkgs.gh
     pkgs.jq
     pkgs.ruby_2_6
