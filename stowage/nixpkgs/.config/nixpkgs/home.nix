@@ -85,6 +85,7 @@ rec {
       lg = "lazygit";
       hs = "home-manager switch";
       hm = "home-manager";
+      cls = "clear";
     };
   };
 
