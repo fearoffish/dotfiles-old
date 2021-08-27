@@ -220,20 +220,20 @@ lvim.plugins = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
 
-vim.cmd [[
-nnoremap Y y$
-
-" paste on cursor
-"nnoremap gP i<CR><Esc>PkJxJx
-"nnoremap gp a<CR><Esc>PkJxJx
-
-" delete without yanking
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-
-" replace currently selected text with default register without yanking it
-vnoremap p "_dP
-]]
+-- vim.cmd [[
+-- nnoremap Y y$
+-- 
+-- " paste on cursor
+-- "nnoremap gP i<CR><Esc>PkJxJx
+-- "nnoremap gp a<CR><Esc>PkJxJx
+-- 
+-- " delete without yanking
+-- nnoremap <leader>d "_d
+-- vnoremap <leader>d "_d
+-- 
+-- " replace currently selected text with default register without yanking it
+-- vnoremap p "_dP
+-- ]]
 
 -- Autopairs
 lvim.builtin.autopairs.on_config_done = function()
@@ -309,6 +309,7 @@ lvim.builtin.which_key.mappings["q"] = { "<cmd>q<CR>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { "<cmd>q!<CR>", "Force Quit" }
 lvim.builtin.which_key.mappings["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" }
 lvim.builtin.which_key.mappings["p"] = { "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>", "Projects" }
+lvim.builtin.which_key.mappings["g"]["r"] = { "<cmd>TermExec cmd='glab ci list | grep -v Showing | grep -v -e \"^$\" | head -n 1 | cut -f 2 | xargs glab ci view'<CR>", "Gitlab Runner" }
 lvim.builtin.which_key.mappings["b"]["F"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer" }
 lvim.builtin.which_key.mappings["s"]["f"] = {	"<cmd>Telescope find_files hidden=true<CR>", "Find File" }
 lvim.builtin.which_key.mappings["s"]["m"] = { "<cmd>Telescope marks<cr>", "Search Marks" }
