@@ -28,33 +28,28 @@ rec {
 
   home.packages = [
     pkgs.asdf-vm
-    pkgs.awscli2
     pkgs.bat
     pkgs.bundix
     pkgs.cargo
     pkgs.coreutils
     pkgs.curl
-    pkgs.emacs
     pkgs.fd
     pkgs.fzf
     pkgs.git
+    pkgs.gnupg
     pkgs.lazygit
     pkgs.lazydocker
     pkgs.luajit
     pkgs.man-db
-    pkgs.nodejs
     pkgs.ripgrep
     pkgs.rnix-lsp
     pkgs.gh
     pkgs.glab
     pkgs.jq
-    pkgs.ruby_2_6
     pkgs.subversion
-    pkgs.terraform
     pkgs.terraform-ls
     pkgs.tree-sitter
     pkgs.starship
-    pkgs.yarn
     pkgs.xz
     pkgs.zoxide
   ];
@@ -82,9 +77,9 @@ rec {
     };
     shellAliases = {
       bet = "bundle exec terraspace";
-      lg = "lazygit";
-      hs = "home-manager switch";
-      hm = "home-manager";
+      lg  = "lazygit";
+      hms = "home-manager switch";
+      hm  = "home-manager";
       cls = "clear";
     };
   };
