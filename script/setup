@@ -19,13 +19,19 @@ fi
 [[ -z ${SKIP_BUNDLER} ]] && brew bundle || echo "Skipping bundler"
 
 # stow'em
-stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 nix npm
+stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 nix npm 
 
 # install nix
 which nix
 if [ $? -eq 0 ]; then
   echo 'nix is already installed (skipping installation)'
 else
+  sudo mkdir /etc/nix
+  sudo echo <<-EOF > /etc/nix/nix.conf
+  # system = aarch64-darwin
+  system = x86_64-darwin
+  extra-platforms = x86_64-darwin aarch64-darwin
+  EOF
   sudo mv /etc/zprofile /etc/zprofile.orig
   sudo mv /etc/zshrc /etc/zshrc.orig
 
