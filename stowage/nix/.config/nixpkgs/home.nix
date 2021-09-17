@@ -40,7 +40,6 @@ rec {
     awscli2
     bash
     bat
-    bundix
     cargo
     coreutils
     curl
@@ -56,6 +55,8 @@ rec {
     lazygit
     lazydocker
     luajit
+    luajitPackages.luacheck
+    stylua
     man-db
     neovim
     ripgrep
@@ -65,8 +66,6 @@ rec {
     jq
     subversion
     terraform-ls
-    rmtrash
-    trash-cli
     tree-sitter
     starship
     xz
@@ -101,11 +100,9 @@ rec {
     oh-my-zsh = {
       enable = true;
       plugins = [
-        "rails"
         "git"
         "common-aliases"
         "jsontools"
-        "bundler"
         "sudo"
         "z"
       ];
@@ -123,8 +120,6 @@ rec {
       lh = "lvim ~/a/dotfiles/stowage/nix/.config/nixpkgs/home.nix";
       ns = "nix-shell";
       sz = "source ~/.zshrc";
-      rm = "rmtrash";
-      rmdir = "rmdirtrash";
     };
     plugins = [
       {
@@ -154,6 +149,7 @@ rec {
     # Configuration written to ~/.config/starship.toml
     settings = {
       add_newline = false;
+      command_timeout = 1000;
     };
   };
 
