@@ -19,38 +19,7 @@ fi
 [[ -z ${SKIP_BUNDLER} ]] && brew bundle || echo "Skipping bundler"
 
 # stow'em
-stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 nix npm 
-
-# install nix
-which nix
-if [ $? -eq 0 ]; then
-  echo 'nix is already installed (skipping installation)'
-else
-  sudo mkdir /etc/nix
-  sudo echo <<-EOF > /etc/nix/nix.conf
-  # system = aarch64-darwin
-  system = x86_64-darwin
-  extra-platforms = x86_64-darwin aarch64-darwin
-  EOF
-  sudo mv /etc/zprofile /etc/zprofile.orig
-  sudo mv /etc/zshrc /etc/zshrc.orig
-
-  sudo mkdir -p /etc/nix
-  sudo stow -v -d ~/a/dotfiles/stowage/nix/etc -t /etc nix
-
-  sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
-  . ${HOME}/.nix-profile/etc/profile.d/nix.sh
-  mkdir -p /nix/var/nix/profiles/per-user/root/channels
-
-  nix-env -f '<nixpkgs>' -iA nixUnstable
-
-  nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-  nix-channel --update
-  nix-shell '<home-manager>' -A install
-fi
-
-rm ~/.zshrc
-home-manager switch
+stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 npm zsh
 
 # Lunarvim
 LVBRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
