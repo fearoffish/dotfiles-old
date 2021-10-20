@@ -6,29 +6,35 @@
 cd ~/Downloads/
 
 # keep dat sudo alive
-echo 'We need sudo...gimme!'
+echo 'Requesting sudo...'
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 which brew
 if [ $? -eq 0 ]; then
-  echo "Homebrew already installed"
+  echo "Skipping Homebrew - already installed"
 else
   echo "Installing homebrew and xcode tools"
   xcode-select --install
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+echo "Cloning dotfiles into ~/Downloads/dofiles"
 git clone https://github.com/fearoffish/dotfiles.git
 cd dotfiles
 
+echo "Installing all from Brewfile"
 [[ -z ${SKIP_BUNDLER} ]] && brew bundle || echo "Skipping bundler"
 
+echo "Linking stow files"
 # stow'em
 stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 npm zsh
 
+echo "Installing Lunarvim"
 # Lunarvim
 LVBRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
 rm -rf ~/.config/lvim/*
+
+echo "Linking lvim stowage"
 stow -v -d ~/a/dotfiles/stowage -t $HOME lvim
 
 echo "Done."
