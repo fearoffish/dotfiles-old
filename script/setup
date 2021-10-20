@@ -3,6 +3,8 @@
 #
 # set -e
 
+cd ~/Downloads/
+
 # keep dat sudo alive
 echo 'We need sudo...gimme!'
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
@@ -15,6 +17,9 @@ else
   xcode-select --install
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+
+git clone https://github.com/fearoffish/dotfiles.git
+cd dotfiles
 
 [[ -z ${SKIP_BUNDLER} ]] && brew bundle || echo "Skipping bundler"
 
