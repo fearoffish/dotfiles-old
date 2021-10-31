@@ -45,6 +45,7 @@ M.config = function()
     "rust",
     "java",
     "yaml",
+    "ruby"
   }
   lvim.builtin.treesitter.ignore_install = { "haskell" }
   -- lvim.builtin.treesitter.incremental_selection = {

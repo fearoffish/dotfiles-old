@@ -27,7 +27,35 @@ M.config = function()
     {"hashivim/vim-terraform"},
     {"dracula/vim"},
     {"p00f/nvim-ts-rainbow"},
+    {
+      "nvim-telescope/telescope-project.nvim",
+      event = "BufWinEnter",
+      setup = function()
+        vim.cmd [[packadd telescope.nvim]]
+      end,
+    },
     { 'rafi/awesome-vim-colorschemes' },
+    {
+      "tzachar/compe-tabnine",
+      run = "./install.sh",
+      requires = "hrsh7th/nvim-compe",
+      event = "InsertEnter",
+    },
+    {
+      "folke/persistence.nvim",
+        event = "BufReadPre", -- this will only start session saving when an actual file was opened
+        module = "persistence",
+        config = function()
+          require("persistence").setup {
+            dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
+            options = { "buffers", "curdir", "tabpages", "winsize" },
+          }
+      end,
+    },
+    {
+      "tpope/vim-surround",
+      keys = {"c", "d", "y"}
+    },
   }
 end
 
