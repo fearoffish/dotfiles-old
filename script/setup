@@ -27,7 +27,7 @@ echo "Installing all from Brewfile"
 
 echo "Linking stow files"
 # stow'em
-stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 npm zsh
+stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 npm zsh starship
 
 echo "Installing Lunarvim"
 # Lunarvim
