@@ -42,7 +42,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
-. $HOME/.cargo/env
+# . $HOME/.cargo/env
 
 eval "$(direnv hook zsh)"
 
