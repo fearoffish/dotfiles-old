@@ -33,3 +33,5 @@ require("user.plugins").config()
 -- =========================================
 -- require("user.keybindings").config()
 
+-- Set up plugins specifically
+require ("user.copilot").config()

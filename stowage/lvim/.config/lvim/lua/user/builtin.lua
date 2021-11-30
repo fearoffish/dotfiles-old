@@ -4,8 +4,8 @@ M.config = function()
   -- CMP
   -- =========================================
   lvim.builtin.cmp.sources = {
-    { name = "nvim_lsp", max_item_count = 7 },
-    { name = "cmp_tabnine", max_item_count = 3 },
+    { name = "nvim_lsp", max_item_count = 4 },
+    { name = "cmp_tabnine", max_item_count = 4 },
     { name = "buffer", max_item_count = 3 },
     { name = "path", max_item_count = 3 },
     { name = "luasnip", max_item_count = 3 },

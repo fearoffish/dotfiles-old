@@ -1640,6 +1640,17 @@
 					<key>Text</key>
 					<string>0x1b</string>
 				</dict>
+				<key>0x33-0x80000-0x14</key>
+				<dict>
+					<key>Action</key>
+					<integer>12</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>#</string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
 				<key>0x34-0x40000</key>
 				<dict>
 					<key>Action</key>
@@ -1998,6 +2009,8 @@
 			<key>Use Non-ASCII Font</key>
 			<false/>
 			<key>Use Tab Color</key>
+			<false/>
+			<key>Use Underline Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
 			<real>1.05</real>

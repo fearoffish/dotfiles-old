@@ -36,9 +36,9 @@ M.config = function()
     },
     { 'rafi/awesome-vim-colorschemes' },
     {
-      "tzachar/compe-tabnine",
+      "tzachar/cmp-tabnine",
       run = "./install.sh",
-      requires = "hrsh7th/nvim-compe",
+      requires = "hrsh7th/nvim-cmp",
       event = "InsertEnter",
     },
     {
@@ -56,6 +56,10 @@ M.config = function()
       "tpope/vim-surround",
       keys = {"c", "d", "y"}
     },
+    {
+      "github/copilot.vim",
+      requires = "hrsh7th/nvim-cmp",
+    }
   }
 end
 
