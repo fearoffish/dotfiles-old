@@ -1,3 +1,8 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 # vim: set filetype=sh : 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -10,7 +15,6 @@ bindkey "^U" backward-kill-line
 
 path=("${HOME}/bin")
 path+=("${HOME}/.local/bin")
-path+=("/opt/c3tk/bin")
 path+=("/opt/homebrew/sbin")
 path+=("/opt/homebrew/bin")
 path+=("/usr/local/bin")
@@ -37,6 +41,7 @@ alias k=kubectl
 alias kc="kubie ctx"
 alias kn="kubie ns"
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ibrew='arch -x86_64 /usr/local/bin/brew'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -55,6 +60,8 @@ export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden"
 
 [[ /opt/homebrew/bin/kubectl ]] && source <(kubectl completion zsh)
 
-path=("${HOME}/.c3tk/bin" $path)
-export PATH=$PATH
-export WITH_C3TK=1
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####

@@ -10,8 +10,6 @@ M.config = function()
     { name = "path", max_item_count = 3 },
     { name = "luasnip", max_item_count = 3 },
     { name = "nvim_lua" },
-    { name = "calc" },
-    { name = "emoji" },
     { name = "treesitter" },
     { name = "crates" },
   }
@@ -86,13 +84,14 @@ M.config = function()
   -- Terminal
   -- =========================================
   lvim.builtin.terminal.active = true
-  lvim.builtin.terminal.execs = {
-    { "lazygit", "gg", "LazyGit" },
-  }
+  -- lvim.builtin.terminal.execs = {
+  --   { "lazygit", "gg", "LazyGit" },
+  -- }
 
   -- WhichKey
   -- =========================================
 
+  lvim.builtin.lualine.sections.lualine_a = { "mode" }
 end
 
 return M

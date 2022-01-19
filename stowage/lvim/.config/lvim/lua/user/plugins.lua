@@ -4,13 +4,6 @@ local M = {}
 M.config = function()
   lvim.plugins = {
     {
-      "ray-x/lsp_signature.nvim",
-      config = function()
-        require("user.lsp_signature").config()
-      end,
-      event = "InsertEnter",
-    },
-    {
       "phaazon/hop.nvim",
       event = "BufRead",
       config = function()
