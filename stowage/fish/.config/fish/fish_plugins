@@ -1,10 +1,2 @@
 jorgebucaran/fisher
-lilyball/nix-env.fish
-PatrickF1/fzf.fish
-joseluisq/gitnow
-gazorby/fish-abbreviation-tips
-icyleaf/fish-pkg-git
-decors/fish-colored-man
-daleeidd/natural-selection
-halostatue/fish-docker
-jhillyerd/plugin-git
+jorgebucaran/replay.fish
