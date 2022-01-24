@@ -1,3 +1,4 @@
 /stowage/lvim/.config/lvim/plugin/packer_compiled.lua
 *.swp
 stowage/gh/.config/gh/hosts.yml
+Brewfile.lock.json
