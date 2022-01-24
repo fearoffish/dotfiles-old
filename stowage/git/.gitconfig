@@ -1,6 +1,7 @@
 [user]
 	name = Jamie van Dyke
-	email = jamie@fearoffish.com
+	email = jamie@fearof.fish
+	signingkey = 6CBDC8C754ECEA0FDB57CE4EC89DD29350A9E797
 
 [alias]
 
@@ -199,8 +200,10 @@
 	#fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
 
 [commit]
-	gpgsign = false
+	gpgsign = true
 [pull]
 	rebase = true
 [init]
 	defaultBranch = main
+[gpg]
+	program = /opt/homebrew/bin/gpg
