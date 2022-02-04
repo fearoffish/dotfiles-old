@@ -1,0 +1,24 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"Dracula Color Scheme",
+		"fish",
+		"Git",
+		"GitGutter",
+		"LSP",
+		"MarkdownPreview",
+		"Marked App Menu",
+		"Package Control",
+		"RainbowBrackets",
+		"Ruby Completions",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-contrib-ruby-lint",
+		"Tower",
+	],
+}
