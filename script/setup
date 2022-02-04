@@ -29,12 +29,4 @@ echo "Linking stow files"
 # stow'em
 stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 npm zsh starship sublime fish
 
-echo "Installing Lunarvim"
-# Lunarvim
-LVBRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
-rm -rf ~/.config/lvim/*
-
-echo "Linking lvim stowage"
-stow -v -d ~/a/dotfiles/stowage -t $HOME lvim
-
 echo "Done."
