@@ -1,0 +1,33 @@
+{
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"font_face": "Fira Code Font Mono",
+	"font_size": 15,
+
+	// The number of spaces a tab is considered equal to
+	"tab_size": 2,
+
+	// Set to true to insert spaces when tab is pressed
+	"translate_tabs_to_spaces": true,
+
+	// If enabled, will highlight any line with a caret
+	"highlight_line": true,
+
+	// Controls where trailing white space is removed on save.
+	// - "none": Do not remove any trailing white space on save.
+	// - "all": Remove all trailing white space on save.
+	// - "not_on_caret": Only remove white space that won't affect the caret.
+	//                   When used in conjunction with "save_on_focus_lost" and
+	//                   certain desktop environments that frequently make the
+	//                   application lose focus this avoids the caret jumping
+	//                   around a lot.
+	"trim_trailing_white_space_on_save": "all",
+	"theme": "Adaptive.sublime-theme",
+
+	// Additional spacing at the top of each line, in pixels
+	"line_padding_top": 3,
+	"auto_complete": true,
+}

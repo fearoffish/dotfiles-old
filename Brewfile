@@ -1,4 +1,5 @@
 tap "afnanenayet/tap"
+tap "caarlos0/tap"
 tap "cloudfoundry/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -35,6 +36,7 @@ brew "gnu-sed"
 brew "pkg-config"
 brew "gnupg"
 brew "go"
+brew "gopls"
 brew "helm"
 brew "imapsync"
 brew "oniguruma"
@@ -67,6 +69,7 @@ brew "skopeo"
 brew "starship"
 brew "stow"
 brew "subversion"
+brew "switchaudio-osx"
 brew "tmate"
 brew "tmux"
 brew "tree"
@@ -75,17 +78,22 @@ brew "wget"
 brew "whois"
 brew "z"
 brew "zlib"
+brew "caarlos0/tap/fork-cleaner"
 brew "screenplaydev/tap/graphite"
 brew "starkandwayne/cf/genesis"
 brew "starkandwayne/cf/safe"
 brew "starkandwayne/cf/spruce"
 cask "1password"
+cask "appcleaner"
 cask "around"
 cask "astropad"
 cask "balenaetcher"
+cask "brave-browser"
 cask "carbon-copy-cloner"
 cask "docker"
+cask "elgato-camera-hub"
 cask "elgato-stream-deck"
+cask "elgato-wave-link"
 cask "emacs"
 cask "expressvpn"
 cask "firefox"
@@ -98,6 +106,7 @@ cask "font-source-code-pro"
 cask "goneovim"
 cask "google-chrome"
 cask "hammerspoon"
+cask "handbrake"
 cask "iterm2"
 cask "kaleidoscope"
 cask "karabiner-elements"
@@ -105,7 +114,9 @@ cask "keybase"
 cask "keyboard-maestro"
 cask "ledger-live"
 cask "macvim"
+cask "mailspring"
 cask "microsoft-teams"
+cask "midi-monitor"
 cask "mmhmm"
 cask "moom"
 cask "multipass"
@@ -119,32 +130,44 @@ cask "signal"
 cask "skype"
 cask "slack"
 cask "soundsource"
+cask "sublime-merge"
+cask "sublime-text"
 cask "tower"
 cask "transmit"
 cask "tunnelblick"
 cask "visual-studio-code"
 cask "wezterm"
+cask "wireshark"
 cask "xquartz"
 cask "zoom"
+mas "1Password for Safari", id: 1569813296
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
+mas "Bear", id: 1091189122
 mas "ColorSlurp", id: 1287239339
 mas "com.echodot.Red", id: 1491764008
+mas "Dark Reader for Safari", id: 1438243180
 mas "Edison Mail", id: 1489591003
 mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
 mas "Harvest", id: 506189836
 mas "Hologram Desktop", id: 1529001798
+mas "Hush", id: 1544743900
 mas "iMovie", id: 408981434
 mas "iNet Network Scanner", id: 403304796
 mas "Keynote", id: 409183694
 mas "Marked 2", id: 890031187
+mas "Mela", id: 1568924476
+mas "Meme Generator", id: 483350546
 mas "Notion Web Clipper", id: 1559269364
 mas "Numbers", id: 409203825
+mas "OctoShell", id: 1462068089
 mas "Overlap", id: 1516950324
 mas "Pages", id: 409201541
 mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Parcel", id: 639968404
 mas "Save to Raindrop.io", id: 1549370672
+mas "StopTheMadness", id: 1376402589
 mas "Things", id: 904280696
 mas "Tweetbot", id: 1384080005
+mas "Vimari", id: 1480933944

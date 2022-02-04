@@ -26,6 +26,8 @@ echo "Installing all from Brewfile"
 [[ -z ${SKIP_BUNDLER} ]] && brew bundle || echo "Skipping bundler"
 
 echo "Linking stow files"
+# create folders so we don't take over the entire folder structure
+mkdir -p "~/Library/Application Support/Sublime Text/Packages/User"
 # stow'em
 stow -v -d ~/a/dotfiles/stowage -t $HOME gh git ctags ruby tmux iterm2 npm zsh starship sublime fish
 
