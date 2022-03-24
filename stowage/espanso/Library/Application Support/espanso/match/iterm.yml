@@ -1,0 +1,31 @@
+name: iterm-expansions
+filter_exec: iTerm
+matches:
+  # work bosh related
+  - trigger: ":bme"
+    replace: "bosh -e snw-jvandyke-lab "
+  - trigger: ":gbme"
+    replace: "genesis bosh snw-jvandyke-lab "
+  - trigger: ":fly"
+    replace: "fly --target genesis@pipes login --team-name genesis --concourse-url https://pipes.starkandwayne.com"
+
+
+
+  # linux oneliners
+  - trigger: ":bigfiles"
+    replace: "du -a $|$ | sort -r -n | head -10"
+  - trigger: ":find"
+    replace: "find . -name "
+  - trigger: ":myip"
+    replace: "dig +short myip.opendns.com @resolver1.opendns.com"
+  - trigger: ":weather"
+    replace: "weather -l 'Skipton, England' -u uk"
+  - trigger: ":listdisks"
+    replace: "sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL"
+  - trigger: ":btm"
+    replace: "btm --mem_as_value --network_use_bytes --process_command --show_table_scroll_position -T -g -c --color nord --battery"
+
+
+  # macos specific
+  - trigger: "flushdns"
+    replace: "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"

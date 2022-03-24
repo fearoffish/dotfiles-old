@@ -3,9 +3,19 @@
 	[
 		"Vintage",
 	],
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_scheme": "Packages/Materialize/schemes/Material Stereokai.tmTheme",
+  "theme": "Material Stereokai.sublime-theme",
+  "overlay_scroll_bars": "enabled",
+  "line_padding_top": 2,
+  "line_padding_bottom": 2,
+  // On retina Mac
+  "font_options": [ "gray_antialias"],
+  "always_show_minimap_viewport": true,
+  "bold_folder_labels": true,
+  // Highlight active indent
+  "indent_guide_options": [ "draw_normal", "draw_active"],
 	"font_face": "Fira Code Font Mono",
-	"font_size": 15,
+	"font_size": 16,
 
 	// The number of spaces a tab is considered equal to
 	"tab_size": 2,
@@ -14,7 +24,7 @@
 	"translate_tabs_to_spaces": true,
 
 	// If enabled, will highlight any line with a caret
-	"highlight_line": true,
+	"highlight_line": false,
 
 	// Controls where trailing white space is removed on save.
 	// - "none": Do not remove any trailing white space on save.
@@ -24,10 +34,8 @@
 	//                   certain desktop environments that frequently make the
 	//                   application lose focus this avoids the caret jumping
 	//                   around a lot.
-	"trim_trailing_white_space_on_save": "all",
-	"theme": "Adaptive.sublime-theme",
+	"trim_trailing_white_space_on_save": "caret",
 
 	// Additional spacing at the top of each line, in pixels
-	"line_padding_top": 3,
 	"auto_complete": true,
 }

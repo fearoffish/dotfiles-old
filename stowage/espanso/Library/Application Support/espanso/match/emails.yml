@@ -1,0 +1,11 @@
+name: email-expansions
+matches:
+  - trigger: ":sig"
+    replace: |
+      Regards,
+      Jamie van Dyke
+  
+  - trigger: ":sig"
+    replace: |
+      All the best,
+      Jamie van Dyke

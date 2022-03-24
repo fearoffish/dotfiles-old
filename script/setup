@@ -18,7 +18,7 @@ else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-echo "Cloning dotfiles into ~/Downloads/dofiles"
+echo "Cloning dotfiles into ~/Downloads/dotfiles"
 git clone https://github.com/fearoffish/dotfiles.git
 cd dotfiles
 

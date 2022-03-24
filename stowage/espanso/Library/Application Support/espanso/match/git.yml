@@ -1,0 +1,13 @@
+name: git-expansions
+filter_exec: iTerm
+matches:
+  - trigger: "gco"
+    replace: "git checkout"
+  - trigger: "gcm"
+    replace: "git commit -m \"$|$\""
+  - trigger: "glog"
+    replace: "git log --pretty=oneline -n 20 --graph --abbrev-commit"
+  - trigger: "gpo"
+    replace: "git push origin main"
+  - trigger: "gss"
+    replace: "git status"

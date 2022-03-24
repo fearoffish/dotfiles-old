@@ -10,3 +10,5 @@ if !ENV['DISABLE_PRY_RAILS'] && !ENV['DISABLE_PRY']
   rescue LoadError
   end
 end
+
+IRB.conf[:SAVE_HISTORY] = 1000

@@ -1,1 +1,0 @@
-/Users/jamievandyke/.fig/shell/post.fish
